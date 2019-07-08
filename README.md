@@ -2,6 +2,13 @@
 An app that uses the Ticketmaster API to find artist concerts
 
 ## How to run
+
+Clone the project:
+```bash
+git clone https://github.com/ivanebernal/concerts_app.git
+```
+Open the app in [Android Studio](https://developer.android.com/studio/).
+
 ### Ticketmaster API key
 This app uses the [ticketmaster api](https://developer.ticketmaster.com/api-explorer/v2/) to explore artists and concerts. In order to use this code, you have to create an api key following the [instructions on the Ticketmaster webpage](https://developer-acct.ticketmaster.com/user/register). Once you have the API key, open your user's directory `~/.gradle/gradle.properties` and write the following:
 ```yaml
@@ -29,3 +36,17 @@ After doing this, you should be able to run the app on your machine.
 ## Screenshots
 
 <img src="https://user-images.githubusercontent.com/16783519/60782541-e6260e80-a0fb-11e9-8f5b-d45c59ccb036.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782375-423c6300-a0fb-11e9-9e43-3591e4b530de.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782408-5718f680-a0fb-11e9-83ad-9df070ac62c6.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782428-6e57e400-a0fb-11e9-9dc9-58747599eec2.png" width=200>
+
+## Missing work
+This app was made with limited time, there's still work to do:
+- Handle api call errors
+- Use dependency injection
+- Add more details and structure to the concert detail screen
+- Remove the gray line that appears in all search boxes
+- Remove unused model files
+- Add crashlytics to detect errors
+- Add all colors used in colors.xml
+- Add all strings used in strings.xml
+- Add paging to the artist and event lists
+- Implement suggestions on search boxes if possible
+- Get a release Google Maps API Key
