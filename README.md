@@ -50,3 +50,5 @@ This app was made with limited time, there's still work to do:
 - Add paging to the artist and event lists
 - Implement suggestions on search boxes if possible
 - Get a release Google Maps API Key
+- UI Tests
+- Unit Tests
