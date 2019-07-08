@@ -26,3 +26,6 @@ Then go to your app's `AndroidManifest.xml` and place the following inside the `
       android:value="@string/google_maps_key"/>
 ```
 After doing this, you should be able to run the app on your machine.
+## Screenshots
+
+<img src="https://user-images.githubusercontent.com/16783519/60782541-e6260e80-a0fb-11e9-8f5b-d45c59ccb036.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782375-423c6300-a0fb-11e9-9e43-3591e4b530de.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782408-5718f680-a0fb-11e9-83ad-9df070ac62c6.png" width=200> <img src="https://user-images.githubusercontent.com/16783519/60782428-6e57e400-a0fb-11e9-9dc9-58747599eec2.png" width=200>
