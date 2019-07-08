@@ -33,6 +33,7 @@ class ArtistsAdapter(private val listener: ArtistSelectionListener): RecyclerVie
         notifyDataSetChanged()
     }
 
+    //TODO: use this for paging
     fun addItems(artists: List<Attraction>) {
         val startIndex = this.artists.size
         this.artists.addAll(artists)

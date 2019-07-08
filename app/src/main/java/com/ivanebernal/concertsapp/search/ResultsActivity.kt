@@ -38,22 +38,15 @@ class ResultsActivity : AppCompatActivity(), ArtistsAdapter.ArtistSelectionListe
     }
 
     private fun setupViews() {
-        val adapter = artistAdapter
-        val layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
-        rv_artist.adapter = adapter
-        rv_artist.layoutManager = layoutManager
-        no_result_view.no_result_image.setImageResource(NoResultIconUtils.getRandomIconId())
+        setupNoResultView()
+        setupArtistList()
+        setupSearchView()
+    }
+
+    private fun setupSearchView() {
         val query = intent.getStringExtra(QUERY_EXTRA)
-        val noResultMessage = "No artist found"
-        no_result_text.text = noResultMessage
         artist_search.setQuery(query, false)
-        val initialArtists = intent.getParcelableArrayListExtra<Attraction>(ATTRACTIONS_EXTRA)
-        if (!initialArtists.isNullOrEmpty()) {
-            artistAdapter.replaceAll(initialArtists)
-        } else {
-            no_result_view.visibility = View.VISIBLE
-        }
-        artist_search.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        artist_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { model.performSearch(query) }
                 no_result_view.visibility = View.GONE
@@ -67,6 +60,24 @@ class ResultsActivity : AppCompatActivity(), ArtistsAdapter.ArtistSelectionListe
                 return false
             }
         })
+    }
+
+    private fun setupArtistList() {
+        val layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
+        val initialArtists = intent.getParcelableArrayListExtra<Attraction>(ATTRACTIONS_EXTRA)
+        rv_artist.adapter = artistAdapter
+        rv_artist.layoutManager = layoutManager
+        if (!initialArtists.isNullOrEmpty()) {
+            artistAdapter.replaceAll(initialArtists)
+        } else {
+            no_result_view.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupNoResultView() {
+        no_result_view.no_result_image.setImageResource(NoResultIconUtils.getRandomIconId())
+        val noResultMessage = "No artist found"
+        no_result_text.text = noResultMessage
     }
 
     private fun setLoading(isLoading: Boolean) {

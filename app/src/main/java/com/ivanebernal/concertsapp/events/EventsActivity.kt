@@ -20,12 +20,14 @@ import kotlinx.android.synthetic.main.no_results_view.view.*
 
 class EventsActivity : AppCompatActivity(), ConcertsAdapter.ConcertSelectedListener {
 
-    lateinit var model: EventsViewModel
+    private lateinit var model: EventsViewModel
     private val adapter = ConcertsAdapter(this)
+    private lateinit var artist: Attraction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events)
+        artist = intent.getParcelableExtra(ARTIST_EXTRA)
         setupObservables()
         setupViews()
     }
@@ -44,18 +46,29 @@ class EventsActivity : AppCompatActivity(), ConcertsAdapter.ConcertSelectedListe
     }
 
     private fun setupViews() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val artist = intent.getParcelableExtra<Attraction>(ARTIST_EXTRA)
-        artist.images?.last()?.let { Picasso.get().load(it.url).fit().centerCrop().into(background) }
+        setupToolbar()
+        setupNoResultsView()
+        setupConcertList()
+        model.fetchEvents(artist.id)
+        setLoading(true)
+    }
+
+    private fun setupConcertList() {
+        concerts.layoutManager = LinearLayoutManager(this)
+        concerts.adapter = adapter
+    }
+
+    private fun setupNoResultsView() {
         val noResultText = "No concerts found for ${artist.name}"
         no_result.no_result_text.text = noResultText
         no_result.no_result_image.setImageResource(NoResultIconUtils.getRandomIconId())
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        artist.images?.last()?.let { Picasso.get().load(it.url).fit().centerCrop().into(background) }
         supportActionBar?.title = artist.name
-        concerts.layoutManager = LinearLayoutManager(this)
-        concerts.adapter = adapter
-        model.fetchEvents(artist.id)
-        setLoading(true)
     }
 
     private fun setLoading(isLoading: Boolean) {
