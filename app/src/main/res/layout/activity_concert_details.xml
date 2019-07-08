@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@drawable/ic_tickets" android:id="@+id/get_tickets_fab"
+            android:layout_gravity="bottom|end" android:layout_margin="16dp" android:focusable="true"/>
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_height="192dp"
+            android:layout_width="match_parent">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:theme="@style/ArtistToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:toolbarId="@+id/toolbar"
+                app:layout_scrollFlags="exitUntilCollapsed|snap"
+                app:contentScrim="?attr/colorPrimary" android:id="@+id/collapsing_toolbar"
+                app:titleEnabled="true">
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" tools:srcCompat="@tools:sample/backgrounds/scenic[10]"
+                    android:id="@+id/concert_image"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/concert_name" android:background="#55000000"
+                    android:gravity="bottom" android:paddingBottom="8dp" android:paddingLeft="48dp"
+                    android:textColor="@android:color/white" android:textSize="30sp"/>
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_width="match_parent" app:layout_collapseMode="pin">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".details.ConcertDetailsActivity">
+
+            <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scrollview" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+            >
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView
+                            android:text="Concert Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:padding="8dp"
+                            android:textColor="@android:color/black" android:textStyle="bold" android:textSize="18sp"
+                            android:background="@color/colorPrimaryLight" android:id="@+id/concert_details_title"/>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:layout_margin="16dp">
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            <TextView
+                                    android:text="Date"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/date_title"
+                                    android:layout_weight="1" android:textStyle="bold"/>
+                            <TextView
+                                    android:text="TextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/date"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            <TextView
+                                    android:text="Time"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/time_title"
+                                    android:layout_weight="1" android:textStyle="bold"/>
+                            <TextView
+                                    android:text="TextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/time"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            <TextView
+                                    android:text="Price Range"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/range_title"
+                                    android:layout_weight="1" android:textStyle="bold"/>
+                            <TextView
+                                    android:text="TextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content" android:id="@+id/range"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                            android:text="Venue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView4" android:padding="8dp"
+                            android:textColor="@android:color/black" android:textStyle="bold" android:textSize="18sp"
+                            android:background="@color/colorPrimaryLight"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="vertical"
+                                      android:layout_weight="1"
+                                      android:layout_margin="16dp">
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="Venue name" android:id="@+id/venue_name" android:textSize="18sp"
+                                      android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="Venue address" android:id="@+id/venue_address"/>
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:id="@+id/venue_postal_code"/>
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:id="@+id/venue_city"/>
+
+                        </LinearLayout>
+                        <fragment
+                                android:layout_width="0dp"
+                                android:layout_height="200dp"
+                                android:id="@+id/map"
+                                android:layout_weight="1"
+                                android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+                    </LinearLayout>
+                    <TextView
+                            android:text="Seat Map"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/seatmap_title" android:padding="8dp"
+                            android:textColor="@android:color/black" android:textStyle="bold" android:textSize="18sp"
+                            android:background="@color/colorPrimaryLight"/>
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp" tools:srcCompat="@tools:sample/avatars[14]"
+                            android:id="@+id/seatmap"/>
+                </LinearLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
